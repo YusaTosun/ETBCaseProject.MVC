@@ -1,4 +1,5 @@
 ﻿using ETBCaseProject.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,39 +11,57 @@ namespace ETBCaseProject.Repository.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        public Task AddAsync(T Entity)
+        private readonly DbSet<T> _dbSet;
+        private readonly EtbDbContext _context;
+
+        public GenericRepository(EtbDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _dbSet = _context.Set<T>();
+        }
+        public async Task AddAsync(T Entity)
+        {
+            await _dbSet.AddAsync(Entity);
         }
 
-        public Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+        public async Task AddRangeAsync(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+           await _dbSet.AddRangeAsync(entities);
+        }
+
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+        {
+           return await _dbSet.AnyAsync(expression);
         }
 
         public IQueryable<T> GetAll()
         {
-            throw new NotImplementedException();
+           return _dbSet.AsNoTracking().AsQueryable();
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
         }
 
         public void Remove(T Entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(Entity);
+        }
+
+        public void RemoveRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
         }
 
         public void Update(T Entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(Entity);
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+           return _dbSet.Where(expression);
         }
     }
 }

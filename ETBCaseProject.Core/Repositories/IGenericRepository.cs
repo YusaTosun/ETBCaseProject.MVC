@@ -14,10 +14,10 @@ namespace ETBCaseProject.Core.Repositories
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task AddAsync(T Entity);
-        //Task AddRangeAsync(IEnumerable<T> entities); //todo: bunlara sonra bak
+        Task AddRangeAsync(IEnumerable<T> entities);
         void Update(T Entity);
         void Remove(T Entity);
-        //void RemoveRange(IEnumerable<T> entities);
+        void RemoveRange(IEnumerable<T> entities);
 
     }
 }
