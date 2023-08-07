@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ETBCaseProject.Core.Models
+﻿namespace ETBCaseProject.Core.Models
 {
+    /// <summary>
+    /// Bütün entity'lerin miraz alması gereken temel entity sınıfı
+    /// </summary>
     public class BaseEntity
     {
         public int Id { get; set; }
