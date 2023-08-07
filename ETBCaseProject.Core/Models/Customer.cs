@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ETBCaseProject.Core.Models
+﻿namespace ETBCaseProject.Core.Models
 {
-    public class Customer:BaseEntity
+    public class Customer : BaseEntity
     {
         public string FullName { get; set; }
         public string MailAddress { get; set; } //todo : null uyarısını düzeltip düzeltmemeye karar ver

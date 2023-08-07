@@ -1,14 +1,13 @@
 ﻿using ETBCaseProject.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETBCaseProject.Repository.Repositories
 {
+    /// <summary>
+    /// Özelleştirmeler için için kullanılacak genel repository sınıfı
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet;
@@ -26,17 +25,20 @@ namespace ETBCaseProject.Repository.Repositories
 
         public async Task AddRangeAsync(IEnumerable<T> entities)
         {
-           await _dbSet.AddRangeAsync(entities);
+            await _dbSet.AddRangeAsync(entities);
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-           return await _dbSet.AnyAsync(expression);
+            return await _dbSet.AnyAsync(expression);
         }
-
+        /// <summary>
+        /// Tüm Entity'leri Tracking pasif haldeyken çeken generic methodu 
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<T> GetAll()
         {
-           return _dbSet.AsNoTracking().AsQueryable();
+            return _dbSet.AsNoTracking().AsQueryable();
         }
 
         public async Task<T> GetByIdAsync(int id)
@@ -58,10 +60,9 @@ namespace ETBCaseProject.Repository.Repositories
         {
             _dbSet.Update(Entity);
         }
-
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
-           return _dbSet.Where(expression);
+            return _dbSet.Where(expression);
         }
     }
 }

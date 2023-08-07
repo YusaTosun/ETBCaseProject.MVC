@@ -1,20 +1,16 @@
 ﻿using ETBCaseProject.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETBCaseProject.Repository
 {
-    public class EtbDbContext:DbContext
+    public class EtbDbContext : DbContext
     {
-        public EtbDbContext(DbContextOptions<EtbDbContext> options) : base(options) 
+        public EtbDbContext(DbContextOptions<EtbDbContext> options) : base(options)
         {
-                
+
         }
+
         public DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +30,6 @@ namespace ETBCaseProject.Repository
             UpdateChangeTracker();
             return base.SaveChangesAsync(cancellationToken);
         }
-
         public void UpdateChangeTracker()
         {
             foreach (var item in ChangeTracker.Entries())
