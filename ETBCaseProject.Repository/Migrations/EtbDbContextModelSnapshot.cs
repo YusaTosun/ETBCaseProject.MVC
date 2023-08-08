@@ -36,6 +36,9 @@ namespace ETBCaseProject.Repository.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -54,6 +57,35 @@ namespace ETBCaseProject.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(1993, 8, 8, 20, 42, 1, 83, DateTimeKind.Local).AddTicks(9199),
+                            CreatedDate = new DateTime(2023, 8, 8, 20, 42, 1, 83, DateTimeKind.Local).AddTicks(9221),
+                            FullName = "Mehmet Yılmaz",
+                            MailAddress = "mehmetyilmaz@gmail.com",
+                            PhoneNumber = "05334567891"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthDate = new DateTime(1998, 8, 8, 20, 42, 1, 83, DateTimeKind.Local).AddTicks(9225),
+                            CreatedDate = new DateTime(2023, 8, 8, 20, 42, 1, 83, DateTimeKind.Local).AddTicks(9226),
+                            FullName = "Cenk Kılıç",
+                            MailAddress = "cenkkilic@gmail.com",
+                            PhoneNumber = "05354577891"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BirthDate = new DateTime(1983, 8, 8, 20, 42, 1, 83, DateTimeKind.Local).AddTicks(9228),
+                            CreatedDate = new DateTime(2023, 8, 8, 20, 42, 1, 83, DateTimeKind.Local).AddTicks(9229),
+                            FullName = "Mehmet Yılmaz",
+                            MailAddress = "mehmetyilmaz@gmail.com",
+                            PhoneNumber = "05334578681"
+                        });
                 });
 #pragma warning restore 612, 618
         }

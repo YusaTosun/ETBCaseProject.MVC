@@ -1,4 +1,6 @@
 using ETBCaseProject.Repository;
+using ETBCaseProject.Services.DependencyResolver;
+using ETBCaseProject.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -19,7 +21,8 @@ namespace ETBCaseProject.MVC
 
                 option.MigrationsAssembly(Assembly.GetAssembly(typeof(EtbDbContext)).GetName().Name));
             });
-
+            builder.Services.AddDependencies();
+            //builder.Services.AddAutoMapper(typeof(MapProfile));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -39,7 +42,7 @@ namespace ETBCaseProject.MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Customer}/{action=Index}/{id?}");
 
             app.Run();
         }
