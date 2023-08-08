@@ -51,6 +51,13 @@ namespace ETBCaseProject.Repository
                                 entityReference.UpdatedDate = DateTime.Now;
                                 break;
                             }
+                        case EntityState.Deleted:
+                            {
+                                Entry(entityReference).Property(x => x.CreatedDate).IsModified = false;
+
+                                entityReference.UpdatedDate = DateTime.Now;
+                                break;
+                            }
                     }
                 }
             }
