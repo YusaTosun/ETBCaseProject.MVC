@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ETBCaseProject.MVC\ETBCaseProject.MVC.csproj" />
     <ProjectReference Include="..\ETBCaseProject.Repository\ETBCaseProject.Repository.csproj" />
   </ItemGroup>
 
