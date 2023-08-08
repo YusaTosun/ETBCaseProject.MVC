@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ETBCaseProject.Core.Services
 {
-    public interface ICustomerService:IGenericRepository<Customer>
+    public interface ICustomerService:IService<Customer>
     {
     }
 }

@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ETBCaseProject.Core.Services;
+using ETBCaseProject.Services.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ETBCaseProject.MVC.Controllers
 {
     public class CustomerController : Controller
     {
-        public IActionResult Index()
+        private readonly ICustomerService _customerService;
+
+        public CustomerController(ICustomerService customerService)
         {
-            return View();
+            _customerService = customerService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _customerService.GetAllAsync());
         }
     }
 }
