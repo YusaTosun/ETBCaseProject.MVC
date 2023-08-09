@@ -31,14 +31,18 @@ namespace ETBCaseProject.MVC.Controllers
         public async Task<IActionResult> Create(CustomerCreateVM customerCreateVM)
         {
             await _customerService.AddAsync(_mapper.Map<Customer>(customerCreateVM));
-            return RedirectToAction(nameof(CustomerController.Index));
+            return RedirectToAction(nameof(Index));
         }
         [HttpGet]
         public async Task<IActionResult> Update(int id) 
         {
-            var customer = await _customerService.GetByIdAsync(id);
-            var updateCustomerVM = _mapper.Map<CustomerUpdateVM>(customer);
-            return View(updateCustomerVM);
+            return View(_mapper.Map<CustomerUpdateVM>(await _customerService.GetByIdAsync(id)));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(CustomerUpdateVM customerUpdateVM)
+        {
+            await _customerService.UpdateAsync(_mapper.Map<Customer>(customerUpdateVM));
+            return RedirectToAction(nameof(Index));
         }
     }
 }

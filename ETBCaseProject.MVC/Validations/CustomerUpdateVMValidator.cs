@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace ETBCaseProject.MVC.Validations
 {
-    public class CustomerVMValidator : AbstractValidator<CustomerCreateVM>
+    public class CustomerUpdateVMValidator : AbstractValidator<CustomerUpdateVM>
     {
-        public CustomerVMValidator()
+        public CustomerUpdateVMValidator()
         {
             RuleFor(x => x.FullName).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
             RuleFor(x => x.MailAddress).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required").EmailAddress().WithMessage("Enter a {PropertyName} in a appropriate format");
