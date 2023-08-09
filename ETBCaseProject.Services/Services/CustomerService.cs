@@ -3,13 +3,6 @@ using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.Core.UnitOfWorks;
-using ETBCaseProject.Repository;
-using ETBCaseProject.Repository.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETBCaseProject.Services.Services
 {

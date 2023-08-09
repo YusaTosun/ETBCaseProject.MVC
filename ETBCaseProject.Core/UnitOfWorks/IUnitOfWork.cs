@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ETBCaseProject.Core.UnitOfWorks
+﻿namespace ETBCaseProject.Core.UnitOfWorks
 {
     public interface IUnitOfWork
     {
