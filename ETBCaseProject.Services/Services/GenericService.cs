@@ -7,15 +7,15 @@ using System.Linq.Expressions;
 
 namespace ETBCaseProject.Services.Services
 {
-    public class Service<T> : IService<T> where T : class
+    public class GenericService<T> : IGenericService<T> where T : class
     {
-        private readonly IMapper _mapper;
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<T> _repository;
 
-        public Service(IMapper mapper, IUnitOfWork unitOfWork, IGenericRepository<T> repository)
+        public GenericService( IUnitOfWork unitOfWork, IGenericRepository<T> repository)
         {
-            _mapper = mapper;
+           
             _unitOfWork = unitOfWork;
             _repository = repository;
         }

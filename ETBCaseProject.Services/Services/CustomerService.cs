@@ -6,14 +6,15 @@ using ETBCaseProject.Core.UnitOfWorks;
 
 namespace ETBCaseProject.Services.Services
 {
-    public class CustomerService : Service<Customer>, ICustomerService
+    /// <summary>
+    /// Customer entity'si için özelleşmiş Service sınıfı,İçerisinde dönüş tipleri Dto olan Customer entity'sine özgü methodlar barındıracak
+    /// </summary>
+    public class CustomerService : GenericService<Customer>, ICustomerService
     {
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICustomerRepository _repository;
-        public CustomerService(IMapper mapper, IUnitOfWork unitOfWork, ICustomerRepository repository) : base(mapper, unitOfWork, repository)
+        public CustomerService( IUnitOfWork unitOfWork, ICustomerRepository repository) : base( unitOfWork, repository)
         {
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _repository = repository;
         }

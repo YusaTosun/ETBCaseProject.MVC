@@ -2,7 +2,7 @@
 
 namespace ETBCaseProject.Core.Services
 {
-    public interface ICustomerService : IService<Customer>
+    public interface ICustomerService : IGenericService<Customer>
     {
     }
 }
