@@ -16,7 +16,7 @@ namespace ETBCaseProject.MVC
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews().AddFluentValidation( x=> x.RegisterValidatorsFromAssemblyContaining<CustomerVMValidator>());
+            builder.Services.AddControllersWithViews().AddFluentValidation( x=> x.RegisterValidatorsFromAssemblyContaining<CustomerCreateVMValidator>());
 
             builder.Services.AddDbContext<EtbDbContext>(x =>
             {

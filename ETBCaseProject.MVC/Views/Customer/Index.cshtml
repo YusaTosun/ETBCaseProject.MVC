@@ -7,41 +7,41 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                Full Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MailAddress)
+                E-Mail Adress
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                Phone Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
+               Birth Date
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.MailAddress
+                </td>
+                <td>
+                    @item.PhoneNumber
+                </td>
+                <td>
+                    @item.BirthDate
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Update" asp-route-itemid="@item.Id">Update</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-itemid="@item.Id">Delete</a>
+                    <a class="btn btn-success" asp-action="Details" asp-route-itemid="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
