@@ -1,6 +1,6 @@
-﻿namespace ETBCaseProject.Core.DTOs
+﻿namespace ETBCaseProject.MVC.Models.CustomerViewModels
 {
-    public class CustomerDto : BaseDto
+    public class CustomerVM
     {
         public int Name { get; set; }
         public string MailAddress { get; set; }

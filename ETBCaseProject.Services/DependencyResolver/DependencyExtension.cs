@@ -7,11 +7,6 @@ using ETBCaseProject.Repository.UnitOfWorks;
 using ETBCaseProject.Services.Mapping;
 using ETBCaseProject.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETBCaseProject.Services.DependencyResolver
 {
@@ -25,12 +20,12 @@ namespace ETBCaseProject.Services.DependencyResolver
         /// </summary>
         /// <param name="services"></param>
         public static void AddDependencies(this IServiceCollection services)
-        { 
-            services.AddScoped<IUnitOfWork,UnitOfWork>();
-            services.AddScoped<ICustomerRepository,CustomerRepository>();
-            services.AddScoped<ICustomerService,CustomerService>();
-            services.AddScoped(typeof(IService<>),typeof(Service<>));
-            services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
             var configuration = new MapperConfiguration(opt =>
