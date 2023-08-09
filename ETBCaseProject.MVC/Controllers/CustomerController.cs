@@ -11,7 +11,7 @@ namespace ETBCaseProject.MVC.Controllers
         private readonly ICustomerService _customerService;
         private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerService customerService,IMapper mapper)
+        public CustomerController(ICustomerService customerService, IMapper mapper)
         {
             _mapper = mapper;
             _customerService = customerService;
@@ -20,7 +20,7 @@ namespace ETBCaseProject.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllAsync()));
+            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()));
         }
         [HttpGet]
         public IActionResult Create()
@@ -34,7 +34,7 @@ namespace ETBCaseProject.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
-        public async Task<IActionResult> Update(int id) 
+        public async Task<IActionResult> Update(int id)
         {
             return View(_mapper.Map<CustomerUpdateVM>(await _customerService.GetByIdAsync(id)));
         }
@@ -42,6 +42,12 @@ namespace ETBCaseProject.MVC.Controllers
         public async Task<IActionResult> Update(CustomerUpdateVM customerUpdateVM)
         {
             await _customerService.UpdateAsync(_mapper.Map<Customer>(customerUpdateVM));
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _customerService.RemoveAsync(await _customerService.GetByIdAsync(id));
             return RedirectToAction(nameof(Index));
         }
     }

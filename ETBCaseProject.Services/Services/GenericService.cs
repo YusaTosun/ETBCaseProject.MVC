@@ -43,6 +43,10 @@ namespace ETBCaseProject.Services.Services
         {
             return await _repository.GetAll().ToListAsync();
         }
+        public async Task<IEnumerable<T>> GetAllWithoutTrackingAsync()
+        {
+            return await _repository.GetAll().AsNoTracking().ToListAsync();
+        }
 
         public async Task<T> GetByIdAsync(int id)
         {

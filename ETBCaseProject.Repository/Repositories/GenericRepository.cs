@@ -33,10 +33,14 @@ namespace ETBCaseProject.Repository.Repositories
             return await _dbSet.AnyAsync(expression);
         }
         /// <summary>
-        /// Tüm Entity'leri Tracking pasif haldeyken çeken generic methodu 
+        /// Tüm Entity'leri Tracking pasif haldeyken çeken generic methodu.Büyük miktarda ve manipule edilmeyecek veri için performans sağlar 
         /// </summary>
         /// <returns></returns>
         public IQueryable<T> GetAll()
+        {
+            return _dbSet.AsNoTracking().AsQueryable();
+        }
+        public IQueryable<T> GetAllWithoutTracking()
         {
             return _dbSet.AsNoTracking().AsQueryable();
         }
