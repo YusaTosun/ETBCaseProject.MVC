@@ -1,5 +1,9 @@
+using AutoMapper;
+using ETBCaseProject.MVC.Mapping;
+using ETBCaseProject.MVC.Validations;
 using ETBCaseProject.Repository;
 using ETBCaseProject.Services.DependencyResolver;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -12,7 +16,7 @@ namespace ETBCaseProject.MVC
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddFluentValidation( x=> x.RegisterValidatorsFromAssemblyContaining<CustomerVMValidator>());
 
             builder.Services.AddDbContext<EtbDbContext>(x =>
             {
@@ -21,7 +25,11 @@ namespace ETBCaseProject.MVC
                 option.MigrationsAssembly(Assembly.GetAssembly(typeof(EtbDbContext)).GetName().Name));
             });
             builder.Services.AddDependencies();
-            //builder.Services.AddAutoMapper(typeof(MapProfile));
+
+
+
+
+            builder.Services.AddAutoMapper(typeof(MapProfile));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
