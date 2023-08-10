@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.Core.UnitOfWorks;
@@ -7,15 +8,15 @@ using System.Linq.Expressions;
 
 namespace ETBCaseProject.Services.Services
 {
-    public class GenericService<T> : IGenericService<T> where T : class
+    public class GenericService<T> : IGenericService<T> where T : BaseEntity
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<T> _repository;
 
-        public GenericService( IUnitOfWork unitOfWork, IGenericRepository<T> repository)
+        public GenericService(IUnitOfWork unitOfWork, IGenericRepository<T> repository)
         {
-           
+
             _unitOfWork = unitOfWork;
             _repository = repository;
         }
@@ -67,8 +68,8 @@ namespace ETBCaseProject.Services.Services
 
         public async Task UpdateAsync(T entity)
         {
-            _repository.Update(entity);
-            await _unitOfWork.CommitAsync();
+                _repository.Update(entity);
+                await _unitOfWork.CommitAsync();
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)

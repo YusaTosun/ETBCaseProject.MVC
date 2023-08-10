@@ -1,0 +1,78 @@
+﻿@model CustomerDetailsVM
+
+<h1>Customer Details</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add New Customer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Id
+            </td>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                @Model.Surname
+            </td>
+            <td>
+                @Model.Age
+            </td>
+            <td>
+                @Model.MailAddress
+            </td>
+            <td>
+                @Model.PhoneNumber
+            </td>
+            <td>
+                @Model.BirthDate.ToShortDateString()
+            </td>
+            <td>
+                @Model.CreatedDate
+            </td>
+            <td>
+                @Model.UpdatedDate
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="Index">Home Page</a>
+                <a class="btn btn-warning" asp-action="Update" asp-route-id="@Model.Id">Update</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
