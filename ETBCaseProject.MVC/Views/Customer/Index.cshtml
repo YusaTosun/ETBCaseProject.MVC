@@ -7,16 +7,10 @@
     <thead>
         <tr>
             <th>
-                Full Name
+                Name
             </th>
             <th>
-                E-Mail Adress
-            </th>
-            <th>
-                Phone Number
-            </th>
-            <th>
-               Birth Date
+                Surname
             </th>
             <th>
                 Actions
@@ -28,16 +22,10 @@
         {
             <tr>
                 <td>
-                    @item.FullName
+                    @item.Name
                 </td>
                 <td>
-                    @item.MailAddress
-                </td>
-                <td>
-                    @item.PhoneNumber
-                </td>
-                <td>
-                    @item.BirthDate
+                    @item.Surname
                 </td>
                 <td>
                     <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a>

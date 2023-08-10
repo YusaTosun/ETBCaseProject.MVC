@@ -10,6 +10,7 @@ namespace ETBCaseProject.MVC.Mapping
         public MapProfile()
         {
             CreateMap<Customer, CustomerListVM>();
+            CreateMap<Customer, CustomerDetailsVM>();
             CreateMap<CustomerCreateVM, Customer>();
             CreateMap<CustomerUpdateVM, Customer>().ReverseMap();
 

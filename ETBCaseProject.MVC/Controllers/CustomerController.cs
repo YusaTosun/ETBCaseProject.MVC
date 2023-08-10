@@ -23,6 +23,11 @@ namespace ETBCaseProject.MVC.Controllers
             return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()));
         }
         [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            return View(_mapper.Map<CustomerDetailsVM>(await _customerService.GetByIdAsync(id)));
+        }
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
