@@ -68,10 +68,15 @@ namespace ETBCaseProject.Services.Services
             return new SuccessResult(Messages.DeleteSuccess);
         }
 
-        public async Task RemoveRangeAsync(IEnumerable<T> entities)
+        public async Task<IResult> RemoveRangeAsync(IEnumerable<T> entities)
         {
+            if (entities is null || entities.Count()==0)
+            {
+                return new ErrorResult(Messages.NullData);
+            }
             _repository.RemoveRange(entities);
             await _unitOfWork.CommitAsync();
+            return new SuccessResult(Messages.DeleteSuccess);
         }
 
         public async Task UpdateAsync(T entity)

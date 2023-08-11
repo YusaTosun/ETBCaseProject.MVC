@@ -14,7 +14,7 @@ namespace ETBCaseProject.Core.Services
         Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         Task UpdateAsync(T entity);
         Task<IResult> RemoveAsync(T entity);
-        Task RemoveRangeAsync(IEnumerable<T> entities);
+        Task<IResult> RemoveRangeAsync(IEnumerable<T> entities);
 
     }
 }
