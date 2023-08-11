@@ -1,8 +1,10 @@
 using AutoMapper;
+using ETBCaseProject.Core.Models;
 using ETBCaseProject.MVC.Mapping;
 using ETBCaseProject.MVC.Validations;
 using ETBCaseProject.Repository;
 using ETBCaseProject.Services.DependencyResolver;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -25,9 +27,6 @@ namespace ETBCaseProject.MVC
                 option.MigrationsAssembly(Assembly.GetAssembly(typeof(EtbDbContext)).GetName().Name));
             });
             builder.Services.AddDependencies();
-
-
-
 
             builder.Services.AddAutoMapper(typeof(MapProfile));
             var app = builder.Build();

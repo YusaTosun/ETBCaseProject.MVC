@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using ETBCaseProject.Business.Constants;
 using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.Core.UnitOfWorks;
+using ETBCaseProject.Core.Utilities.Results;
+using ETBCaseProject.Core.Utilities.Results.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -54,10 +57,16 @@ namespace ETBCaseProject.Services.Services
             return await _repository.GetByIdAsync(id);
         }
 
-        public async Task RemoveAsync(T entity)
+        public async Task<IResult> RemoveAsync(T entity)
         {
+            if (entity is null)
+            {
+                return new ErrorResult(Messages.NullData);
+            }
             _repository.Remove(entity);
             await _unitOfWork.CommitAsync();
+
+            return new SuccessResult(Messages.DeleteSuccess);
         }
 
         public async Task RemoveRangeAsync(IEnumerable<T> entities)
