@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Services;
+using ETBCaseProject.Core.Utilities.Results.Concrete;
+using ETBCaseProject.MVC.Models;
 using ETBCaseProject.MVC.Models.CustomerViewModels;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ETBCaseProject.MVC.Controllers
 {
@@ -10,6 +14,7 @@ namespace ETBCaseProject.MVC.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly IMapper _mapper;
+        private readonly IValidator<Customer> _validator;
 
         public CustomerController(ICustomerService customerService, IMapper mapper)
         {
@@ -52,8 +57,14 @@ namespace ETBCaseProject.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            await _customerService.RemoveAsync(await _customerService.GetByIdAsync(id));
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                var result = await _customerService.RemoveAsync(await _customerService.GetByIdAsync(id));
+                //return RedirectToAction(nameof(Index));
+
+                return Json(result);
+            }
+            return Ok();
         }
     }
 }
