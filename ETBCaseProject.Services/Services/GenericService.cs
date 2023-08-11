@@ -23,7 +23,7 @@ namespace ETBCaseProject.Services.Services
             _repository = repository;
         }
 
-        public async Task<T> AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)  /// silinecek
         {
             await _repository.AddAsync(entity);
             await _unitOfWork.CommitAsync();
@@ -58,31 +58,36 @@ namespace ETBCaseProject.Services.Services
 
         public async Task<IResult> RemoveAsync(T entity)
         {
-            if (entity is null)
+            if (entity is not null)
             {
-                return new ErrorResult(Messages.NullData);
+                _repository.Remove(entity);
+                await _unitOfWork.CommitAsync();
+                return new SuccessResult(Messages.DeleteSuccess);
             }
-            _repository.Remove(entity);
-            await _unitOfWork.CommitAsync();
-
-            return new SuccessResult(Messages.DeleteSuccess);
+            return new ErrorResult(Messages.NullData);
         }
 
         public async Task<IResult> RemoveRangeAsync(IEnumerable<T> entities)
         {
-            if (entities is null || entities.Count()==0)
+            if (entities is not null && entities.Count() != 0)
             {
-                return new ErrorResult(Messages.NullData);
+                _repository.RemoveRange(entities);
+                await _unitOfWork.CommitAsync();
+                return new SuccessResult(Messages.DeleteSuccess);
             }
-            _repository.RemoveRange(entities);
-            await _unitOfWork.CommitAsync();
-            return new SuccessResult(Messages.DeleteSuccess);
+            return new ErrorResult(Messages.NullData);
+
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<IResult> UpdateAsync(T entity)
         {
-            _repository.Update(entity);
-            await _unitOfWork.CommitAsync();
+            if (entity is not null)
+            {
+                _repository.Update(entity);
+                await _unitOfWork.CommitAsync();
+                return new SuccessResult("you have successfully updated the customer");
+            }
+            return new ErrorResult("you could not update the client!");
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
