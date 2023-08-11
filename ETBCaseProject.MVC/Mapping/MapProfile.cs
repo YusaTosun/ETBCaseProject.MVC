@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ETBCaseProject.Core.DTOs;
 using ETBCaseProject.Core.Models;
 using ETBCaseProject.MVC.Models.CustomerViewModels;
 

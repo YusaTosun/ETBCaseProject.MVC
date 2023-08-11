@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ETBCaseProject.Core.Models;
+﻿using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.Core.UnitOfWorks;
@@ -13,7 +12,7 @@ namespace ETBCaseProject.Services.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICustomerRepository _repository;
-        public CustomerService( IUnitOfWork unitOfWork, ICustomerRepository repository) : base( unitOfWork, repository)
+        public CustomerService(IUnitOfWork unitOfWork, ICustomerRepository repository) : base(unitOfWork, repository)
         {
             _unitOfWork = unitOfWork;
             _repository = repository;

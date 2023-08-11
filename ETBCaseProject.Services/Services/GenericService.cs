@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ETBCaseProject.Business.Constants;
+﻿using ETBCaseProject.Business.Constants;
 using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
@@ -77,8 +76,8 @@ namespace ETBCaseProject.Services.Services
 
         public async Task UpdateAsync(T entity)
         {
-                _repository.Update(entity);
-                await _unitOfWork.CommitAsync();
+            _repository.Update(entity);
+            await _unitOfWork.CommitAsync();
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
