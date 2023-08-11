@@ -48,7 +48,7 @@ namespace ETBCaseProject.Repository.Seeds
                       PhoneNumber = "05334578681",
                       BirthDate = DateTime.Now.AddYears(-40),
                       CreatedDate = DateTime.Now,
-                  }, 
+                  },
                   new Customer()
                   {
                       Id = 5,
@@ -58,7 +58,7 @@ namespace ETBCaseProject.Repository.Seeds
                       PhoneNumber = "05334578681",
                       BirthDate = DateTime.Now.AddYears(-40),
                       CreatedDate = DateTime.Now,
-                  }, 
+                  },
                   new Customer()
                   {
                       Id = 6,

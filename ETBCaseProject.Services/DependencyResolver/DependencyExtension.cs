@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ETBCaseProject.Core.Repositories;
+﻿using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.Core.UnitOfWorks;
 using ETBCaseProject.Repository.Repositories;

@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Services;
-using ETBCaseProject.Core.Utilities.Results.Concrete;
-using ETBCaseProject.MVC.Models;
 using ETBCaseProject.MVC.Models.CustomerViewModels;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ETBCaseProject.MVC.Controllers
 {
