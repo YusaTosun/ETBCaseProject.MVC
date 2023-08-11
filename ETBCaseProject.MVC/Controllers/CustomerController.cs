@@ -11,8 +11,6 @@ namespace ETBCaseProject.MVC.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly IMapper _mapper;
-        private readonly IValidator<Customer> _validator;
-
         public CustomerController(ICustomerService customerService, IMapper mapper)
         {
             _mapper = mapper;
@@ -54,14 +52,7 @@ namespace ETBCaseProject.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            if (ModelState.IsValid)
-            {
-                var result = await _customerService.RemoveAsync(await _customerService.GetByIdAsync(id));
-                //return RedirectToAction(nameof(Index));
-
-                return Json(result);
-            }
-            return Ok();
+            return Json(await _customerService.RemoveAsync(await _customerService.GetByIdAsync(id)));
         }
     }
 }
