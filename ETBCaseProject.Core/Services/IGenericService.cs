@@ -12,7 +12,7 @@ namespace ETBCaseProject.Core.Services
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task<T> AddAsync(T entity);
         Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
-        Task<IResult> UpdateAsync(T entity);
+        Task UpdateAsync(T entity);
         Task<IResult> RemoveAsync(T entity);
         Task<IResult> RemoveRangeAsync(IEnumerable<T> entities);
 

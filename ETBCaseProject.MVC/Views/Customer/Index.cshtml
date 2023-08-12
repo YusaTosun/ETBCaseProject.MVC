@@ -13,6 +13,12 @@
                 Surname
             </th>
             <th>
+                E-mail
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
                 Actions
             </th>
         </tr>
@@ -28,11 +34,16 @@
                 @item.Surname
             </td>
             <td>
+                @item.MailAddress
+            </td>
+            <td>
+                @item.PhoneNumber
+            </td>
+            <td>
                 <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a>
                 <a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                @*<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                <div class="DeleteActionDiv a">
-                    <a class="btn btn-danger" data-id="@item.Id">Delete</a>
+                <div>
+                    <a class="btn btn-danger DeleteAction" data-id="@item.Id">Delete</a>
                 </div>
             </td>
         </tr>
@@ -41,12 +52,10 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> @*daha sonra sweet alert yükle*@
 <script>
     $(document).ready(function () {
-        $('.DeleteActionDiv a').click(function () {
+        $('.DeleteAction').click(function () {
             let id = $(this).data("id");
 
                 Swal.fire({
@@ -88,3 +97,4 @@
         });
     });
 </script>
+
