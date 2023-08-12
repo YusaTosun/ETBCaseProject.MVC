@@ -2,7 +2,6 @@
 using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.MVC.Models.CustomerViewModels;
-using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETBCaseProject.MVC.Controllers
@@ -35,7 +34,7 @@ namespace ETBCaseProject.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CustomerCreateVM customerCreateVM)
         {
-            await _customerService.AddCustomerAsync(_mapper.Map<Customer>(customerCreateVM));
+            await _customerService.AddAsync(_mapper.Map<Customer>(customerCreateVM));
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]

@@ -12,13 +12,11 @@ namespace ETBCaseProject.Services.Services
 {
     public class GenericService<T> : IGenericService<T> where T : BaseEntity
     {
-
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<T> _repository;
 
         public GenericService(IUnitOfWork unitOfWork, IGenericRepository<T> repository)
         {
-
             _unitOfWork = unitOfWork;
             _repository = repository;
         }
@@ -79,15 +77,13 @@ namespace ETBCaseProject.Services.Services
 
         }
 
-        public async Task<IResult> UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
             if (entity is not null)
             {
                 _repository.Update(entity);
                 await _unitOfWork.CommitAsync();
-                return new SuccessResult("you have successfully updated the customer");
             }
-            return new ErrorResult("you could not update the client!");
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
