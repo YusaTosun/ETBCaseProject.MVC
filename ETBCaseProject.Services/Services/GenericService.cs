@@ -54,27 +54,22 @@ namespace ETBCaseProject.Services.Services
             return await _repository.GetByIdAsync(id);
         }
 
-        public async Task<IResult> RemoveAsync(T entity)
+        public async Task RemoveAsync(T entity)
         {
             if (entity is not null)
             {
                 _repository.Remove(entity);
                 await _unitOfWork.CommitAsync();
-                return new SuccessResult(Messages.DeleteSuccess);
             }
-            return new ErrorResult(Messages.NullData);
         }
 
-        public async Task<IResult> RemoveRangeAsync(IEnumerable<T> entities)
+        public async Task RemoveRangeAsync(IEnumerable<T> entities)
         {
-            if (entities is not null && entities.Count() != 0)
+            if (entities is not null && entities.Count()!=0)
             {
                 _repository.RemoveRange(entities);
                 await _unitOfWork.CommitAsync();
-                return new SuccessResult(Messages.DeleteSuccess);
-            }
-            return new ErrorResult(Messages.NullData);
-
+            }  
         }
 
         public async Task UpdateAsync(T entity)

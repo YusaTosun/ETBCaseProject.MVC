@@ -51,7 +51,7 @@ namespace ETBCaseProject.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            return Json(await _customerService.RemoveAsync(await _customerService.GetByIdAsync(id)));
+            return Json(await _customerService.RemoveWithAjaxAsync(await _customerService.GetByIdAsync(id)));
         }
     }
 }
