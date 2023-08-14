@@ -26,7 +26,7 @@ namespace ETBCaseProject.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int page = 1)
         {
-            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x => x.Name).ToPagedList(page,5));
+            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x => x.Name).ToPagedList(page,8));
         }
         [HttpPost]
         public async Task<IActionResult> Index(string SearchText = "")
