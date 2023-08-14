@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace ETBCaseProject.Repository.Configurations
 {
     /// <summary>
-    /// Customer sınıfının entity configürasyonları için özelleştirilmiş sınıf 
+    /// Customer entity'sinin veritabanı konfigürasyonlarını uygulayan sınıf
     /// </summary>
     public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
     {

@@ -2,6 +2,9 @@
 
 namespace ETBCaseProject.Repository.UnitOfWorks
 {
+    /// <summary>
+    /// Veritabanı işlemlerini yönetmek için UnitOfWork Tasarım Deseni uygulayan sınıf
+    /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
         private readonly EtbDbContext _context;

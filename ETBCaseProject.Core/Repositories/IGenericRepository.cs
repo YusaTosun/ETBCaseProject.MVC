@@ -2,6 +2,10 @@
 
 namespace ETBCaseProject.Core.Repositories
 {
+    /// <summary>
+    /// Temel Repository işlemlerini içeren IGenericRepository interface'i
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IGenericRepository<T> where T : class
     {
         Task<T> GetByIdAsync(int id);

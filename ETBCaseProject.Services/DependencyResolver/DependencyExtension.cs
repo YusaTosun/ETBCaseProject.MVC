@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace ETBCaseProject.Services.DependencyResolver
 {
     /// <summary>
-    /// Program.cs sınıfını temiz tutmak için oluşturulmuş IServiceCollection sxtension sınıfı
+    /// Program.cs sınıfını temiz tutmak için oluşturulmuş IServiceCollection extension sınıfı
     /// </summary>
     public static class DependencyExtension
     {
@@ -24,16 +24,6 @@ namespace ETBCaseProject.Services.DependencyResolver
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
-
-            //var configuration = new MapperConfiguration(opt =>
-            //{
-            //    opt.AddProfile(new MapProfile());
-            //});
-
-            //var mapper = configuration.CreateMapper();
-
-            //services.AddSingleton(mapper);
         }
     }
 }

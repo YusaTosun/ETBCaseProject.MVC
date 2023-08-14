@@ -20,16 +20,11 @@ namespace ETBCaseProject.Services.Services
             _unitOfWork = unitOfWork;
             _customerRepository = customerRepository;
         }
-        public async Task<IResult> RemoveRangeWithAjaxAsync(IEnumerable<Customer> entities)
-        {
-            if (entities is not null && entities.Count() != 0)
-            {
-                _customerRepository.RemoveRange(entities);
-                await _unitOfWork.CommitAsync();
-                return new SuccessResult(Messages.DeleteSuccess);
-            }
-            return new ErrorResult(Messages.NullData);
-        }
+        /// <summary>
+        /// Verilen nesneyi veritabanında ajax ile silindi olarak işaretler.SoftDelete işlemi gerçekleştirir
+        /// </summary>
+        /// <param name="entity">Silinmek istenen Customer</param>
+        /// <returns>Ajax işlemlerine uygun Result nesnesi döner.</returns>
         public async Task<IResult> RemoveWithAjaxAsync(Customer entity)
         {
             if (entity is not null)

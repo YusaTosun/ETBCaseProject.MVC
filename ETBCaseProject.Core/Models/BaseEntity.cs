@@ -1,7 +1,7 @@
 ﻿namespace ETBCaseProject.Core.Models
 {
     /// <summary>
-    /// Bütün entity'lerin miraz alması gereken temel entity sınıfı
+    /// Bütün entity'lerin miras alması gereken temel entity sınıfı
     /// </summary>
     public class BaseEntity
     {
