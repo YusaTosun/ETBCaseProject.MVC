@@ -3,6 +3,7 @@ using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.MVC.Models.CustomerViewModels;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace ETBCaseProject.MVC.Controllers
 {
@@ -23,14 +24,14 @@ namespace ETBCaseProject.MVC.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x=>x.Name));
+            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x => x.Name).ToPagedList(page,5));
         }
         [HttpPost]
         public async Task<IActionResult> Index(string SearchText = "")
         {
-            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x => x.Name).Where(x => x.Name.Contains(SearchText)));
+            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x => x.Name).Where(x => x.Name.Contains(SearchText)).ToPagedList());
         }
         [HttpGet]
         public async Task<IActionResult> Details(int id)

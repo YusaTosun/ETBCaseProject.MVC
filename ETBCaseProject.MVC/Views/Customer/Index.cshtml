@@ -1,4 +1,8 @@
-﻿@model IEnumerable<CustomerListVM>
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc;
+@using X.PagedList;
+
+@model IPagedList<CustomerListVM>
 
 
 <form asp-action="Index">
@@ -56,7 +60,8 @@
         </tr>
     }
 </table>
-
+<br />
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> @*daha sonra sweet alert yükle*@
