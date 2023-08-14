@@ -1,5 +1,9 @@
 ﻿namespace ETBCaseProject.Core.Utilities.Results.Concrete
 {
+    /// <summary>
+    /// Hata durumunda veri taşıyan sonuç nesnesi.
+    /// </summary>
+    /// <typeparam name="T">Verinin türü</typeparam>
     public class ErrorDataResult<T> : DataResult<T> where T : class
     {
         public ErrorDataResult() : base(default, false)
