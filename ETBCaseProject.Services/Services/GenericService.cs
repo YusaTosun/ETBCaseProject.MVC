@@ -1,10 +1,7 @@
-﻿using ETBCaseProject.Business.Constants;
-using ETBCaseProject.Core.Models;
+﻿using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Repositories;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.Core.UnitOfWorks;
-using ETBCaseProject.Core.Utilities.Results;
-using ETBCaseProject.Core.Utilities.Results.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -95,11 +92,11 @@ namespace ETBCaseProject.Services.Services
         /// <returns></returns>
         public async Task RemoveRangeAsync(IEnumerable<T> entities)
         {
-            if (entities is not null && entities.Count()!=0)
+            if (entities is not null && entities.Count() != 0)
             {
                 _repository.RemoveRange(entities);
                 await _unitOfWork.CommitAsync();
-            }  
+            }
         }
         /// <summary>
         /// Verilen entity'yi veritabanında günceller.UnitOfWork ile kayıt işlemi gerçekleştirir
