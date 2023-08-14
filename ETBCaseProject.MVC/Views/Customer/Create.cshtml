@@ -6,6 +6,7 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+<h1>Add New Customer</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -39,11 +40,8 @@
             <hr />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-success" asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a class="btn btn-success" asp-action="Index">Back to List</a>
 </div>

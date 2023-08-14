@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ETBCaseProject.MVC.Controllers
 {
+    /// <summary>
+    /// Müşteri işlemlerini yönetmek için Controller sınıfı.
+    /// </summary>
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
@@ -15,11 +18,14 @@ namespace ETBCaseProject.MVC.Controllers
             _mapper = mapper;
             _customerService = customerService;
         }
-
+        /// <summary>
+        /// Tüm müşterileri listelemek için kullanılan HTTP GET işlemi
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()));
+            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x=>x.Name));
         }
         [HttpGet]
         public async Task<IActionResult> Details(int id)
