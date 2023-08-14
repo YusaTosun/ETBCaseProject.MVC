@@ -21,21 +21,35 @@ body {
   margin-bottom: 60px;
 }
 
-ul li a,
-ol li a,
-span{
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #3498db;
-    color: #ffffff;
-    text-decoration: none;
-    border: none;
-    border-radius: 3px;
-    margin: 5px;
+.Pagination a,
+.Pagination span {
+    margin: 2px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
+    color: #333;
 }
 
-    ul li a:hover,
-    ol li a:hover {
-        background-color: #2980b9;
+    .Pagination a:hover,
+    .Pagination span:hover {
+        background-color: #f5f5f5;
     }
+
+.Pagination .active {
+    background-color: #ddd;
+    border-color: #ddd;
+    color: #fff;
+}
+
+.nav-item a {
+    background-color: #54a874;
+    margin: 2px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
