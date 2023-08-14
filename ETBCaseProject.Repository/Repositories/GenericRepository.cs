@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 namespace ETBCaseProject.Repository.Repositories
 {
     /// <summary>
-    /// Özelleştirmeler için için kullanılacak genel repository sınıfı
+    /// Belirtilen tip için genel veritabanı işlemlerini yapan generic repository sınıfı
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">İşlem yapılacak entity tipi</typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet;

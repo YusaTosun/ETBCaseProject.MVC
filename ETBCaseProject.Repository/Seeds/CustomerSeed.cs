@@ -1,4 +1,5 @@
 ﻿using ETBCaseProject.Core.Models;
+using ETBCaseProject.Repository.Seeds;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

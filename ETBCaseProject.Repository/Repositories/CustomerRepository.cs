@@ -4,7 +4,7 @@ using ETBCaseProject.Core.Repositories;
 namespace ETBCaseProject.Repository.Repositories
 {
     /// <summary>
-    /// Customer için özelleştirilmiş repository sınıfı
+    /// Customer entity'leri için özelleştirilmiş veritabanı işlemlerini gerçekleştiren repository sınıfı
     /// </summary>
     public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
