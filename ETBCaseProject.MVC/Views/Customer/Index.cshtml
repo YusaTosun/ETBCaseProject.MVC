@@ -1,5 +1,13 @@
 ﻿@model IEnumerable<CustomerListVM>
 
+
+<form asp-action="Index">
+    <div>
+        <input type="text" name="SearchText" />
+        <button class="btn btn-dark" type="submit">Search</button>
+    </div>
+</form>
+<br />
 <p>
     <a class="btn btn-primary" asp-action="Create">Add New Customer</a>
 </p>

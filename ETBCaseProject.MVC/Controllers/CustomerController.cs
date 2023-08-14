@@ -27,6 +27,11 @@ namespace ETBCaseProject.MVC.Controllers
         {
             return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x=>x.Name));
         }
+        [HttpPost]
+        public async Task<IActionResult> Index(string SearchText = "")
+        {
+            return View(_mapper.Map<List<CustomerListVM>>(await _customerService.GetAllWithoutTrackingAsync()).OrderBy(x => x.Name).Where(x => x.Name.Contains(SearchText)));
+        }
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
