@@ -3,7 +3,7 @@
 namespace ETBCaseProject.Core.Repositories
 {
     /// <summary>
-    /// Temel Repository işlemlerini içeren IGenericRepository interface'i
+    /// Farklı varlık (entity) tipleri için temel veritabanı işlemlerini içerir
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IGenericRepository<T> where T : class
