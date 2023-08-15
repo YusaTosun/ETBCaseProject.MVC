@@ -3,6 +3,7 @@ using ETBCaseProject.Core.Models;
 using ETBCaseProject.Core.Services;
 using ETBCaseProject.MVC.Models.CustomerViewModels;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using X.PagedList;
 
 namespace ETBCaseProject.MVC.Controllers
@@ -14,10 +15,12 @@ namespace ETBCaseProject.MVC.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly IMapper _mapper;
-        public CustomerController(ICustomerService customerService, IMapper mapper)
+        private readonly IToastNotification _toastNotification;
+        public CustomerController(ICustomerService customerService, IMapper mapper,IToastNotification toastNotification)
         {
             _mapper = mapper;
             _customerService = customerService;
+            _toastNotification = toastNotification;
         }
         /// <summary>
         /// Tüm müşterileri listelemek için kullanılan HTTP GET işlemi
@@ -67,7 +70,8 @@ namespace ETBCaseProject.MVC.Controllers
         public async Task<IActionResult> Create(CustomerCreateVM customerCreateVM)
         {
             await _customerService.AddAsync(_mapper.Map<Customer>(customerCreateVM));
-            return RedirectToAction(nameof(Index));
+            _toastNotification.AddSuccessToastMessage("Ekleme işlemi başarılı");
+            return View();
         }
         /// <summary>
         /// Customer güncellemek için kullanılan HTTP GET işlemi

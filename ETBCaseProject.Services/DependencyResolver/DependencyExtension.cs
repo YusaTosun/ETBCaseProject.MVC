@@ -24,6 +24,8 @@ namespace ETBCaseProject.Services.DependencyResolver
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+
         }
     }
 }
